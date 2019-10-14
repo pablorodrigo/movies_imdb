@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">MoviesImdb</string>
+    <string name="ic_search">Search…</string>
+    <string name="descrition_movie_image">Image of an movie</string>
 </resources>

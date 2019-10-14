@@ -1,41 +1,55 @@
 package br.com.imdb.movies.view.activity
 
 import android.os.Bundle
-import android.util.Log
+import android.view.Menu
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.SearchView
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
-import br.com.imdb.movies.APIKEY
-import br.com.imdb.movies.model.domain.Movie
-import br.com.imdb.movies.model.network.APIRetrofitService
-import br.com.imdb.movies.model.network.MovieApi
-import br.com.imdb.movies.model.network.MovieDeserializer
+import androidx.recyclerview.widget.DefaultItemAnimator
+import androidx.recyclerview.widget.LinearLayoutManager
+import br.com.imdb.movies.R
+import br.com.imdb.movies.model.domain.MoviesTitles
+import br.com.imdb.movies.view.adapter.MovieAdapter
 import br.com.imdb.movies.viewmodel.MovieViewModel
-import com.google.gson.Gson
-import com.google.gson.GsonBuilder
 import kotlinx.android.synthetic.main.activity_main.*
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
+import org.jetbrains.anko.startActivity
+import org.parceler.Parcels
 
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var movieViewModel: MovieViewModel
+    private var adapter: MovieAdapter? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(br.com.imdb.movies.R.layout.activity_main)
+        setContentView(R.layout.activity_main)
 
         movieViewModel = ViewModelProviders.of(this).get(MovieViewModel::class.java)
 
+        configUI()
+
+    }
+    /**
+     * click function for eatch item of Movie in recyclerview
+     * @param movie object send to another view
+     */
+    private fun onClickListener(movie: MoviesTitles) {
+
+        startActivity<MovieDetailActivity>("movie" to Parcels.wrap(movie))
+
     }
 
-    override fun onResume() {
-        super.onResume()
-        updateUI()
+    /**
+     * config MainActivity UI
+     */
+    private fun configUI() {
+        //config recycler
+        recycler_movies.layoutManager = LinearLayoutManager(this)
+        recycler_movies.itemAnimator = DefaultItemAnimator()
+        recycler_movies.setHasFixedSize(true)
+
     }
 
     /**
@@ -45,10 +59,54 @@ class MainActivity : AppCompatActivity() {
 
         movieViewModel.geMoviesTopRatedLiveData()?.observe(this, Observer {
 
-            it.listMovie?.let { movie ->
-                tv_test.text = movie[19].title
-            }
+            adapter = MovieAdapter(this, it.listMovie!!) { movie -> onClickListener(movie) }
+            recycler_movies.adapter = adapter
+
 
         })
     }
+
+
+    /**
+     * load default menu for activity
+     */
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+
+        menuInflater.inflate(R.menu.menu_search, menu)
+
+        //config menuSearch
+        val search = menu?.findItem(R.id.menu_item_search)
+        val searchView = search?.actionView as SearchView
+        searchView.queryHint = this.resources.getString(R.string.ic_search)
+        search(searchView)
+
+        return super.onCreateOptionsMenu(menu)
+
+    }
+
+    /**
+     * filter list of Movies in view
+     * @param
+     */
+    private fun search(searchView: SearchView) {
+
+        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String): Boolean {
+
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String): Boolean {
+                if (adapter != null) adapter!!.filter(newText)
+                return true
+            }
+        })
+    }
+
+
+    override fun onResume() {
+        super.onResume()
+        updateUI()
+    }
+
 }

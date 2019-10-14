@@ -15,6 +15,7 @@ class APIRetrofitService {
 
     companion object {
         private const val BASE_URL = "http://api.themoviedb.org/3/"
+        const val BASE_URL_IMAGE = "https://image.tmdb.org/t/p/w500"
 
         //conexion created
         private val gsonBuilder =
