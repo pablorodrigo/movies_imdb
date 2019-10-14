@@ -1,7 +1,6 @@
 package br.com.imdb.movies.view.adapter
 
 import android.content.Context
-import android.os.Build
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,11 +10,9 @@ import androidx.recyclerview.widget.RecyclerView
 import br.com.imdb.movies.R
 import br.com.imdb.movies.model.domain.MoviesTitles
 import br.com.imdb.movies.model.network.APIRetrofitService
+import br.com.imdb.movies.util.MoviesUtil
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.adapter_movie.view.*
-import java.text.SimpleDateFormat
-import java.time.LocalDate
-import java.time.format.DateTimeFormatter
 import java.util.*
 
 /**
@@ -51,17 +48,7 @@ class MovieAdapter(
             tv_name_movie.text =
                 movie.title!!.capitalize().plus(" (${movie.releaseDate?.substringBefore("-")})")
 
-            //check version of android to update Movie date
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                val formatter = DateTimeFormatter.ofPattern("EEE, dd MMM yyyy")
-                val movieDate = LocalDate.parse(movie.releaseDate, DateTimeFormatter.ISO_DATE)
-                val formattedDate = movieDate?.format(formatter)
-                release_date.text = formattedDate
-            } else {
-                val formatter = SimpleDateFormat("EEE, dd MMM yyyy");
-                val formattedDate = formatter.format(movie.releaseDate)
-                release_date.text = formattedDate
-            }
+            release_date.text = MoviesUtil.dateFormat(movie.releaseDate)
 
             movie_rating.rating = movie.voteAverage!!.toFloat().div(2)
 

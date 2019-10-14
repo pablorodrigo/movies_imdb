@@ -3,4 +3,10 @@
     <string name="app_name">MoviesImdb</string>
     <string name="ic_search">Pesquisar…</string>
     <string name="descrition_movie_image">Imagem de um filme</string>
+    <string name="detail_backdrop_image">Imagem de um Filme</string>
+    <string name="cast">Elenco</string>
+    <string name="trailers">Trailer</string>
+    <string name="adult">adulto? %1$s</string>
+    <string name="rating">nota: %1$s/10</string>
+    <string name="votes">votos: %1$s</string>
 </resources>

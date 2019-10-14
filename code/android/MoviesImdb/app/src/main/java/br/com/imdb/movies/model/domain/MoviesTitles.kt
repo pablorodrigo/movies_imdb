@@ -23,5 +23,8 @@ class MoviesTitles {
     var overview: String? = null
     @SerializedName("release_date")
     var releaseDate: String? = null
+    var adult: Boolean? = null
+    @SerializedName("vote_count")
+    var voteCount: String? = null
 
 }
