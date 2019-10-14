@@ -2,7 +2,6 @@ package br.com.imdb.movies.view.activity
 
 import android.os.Bundle
 import android.view.Menu
-import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
@@ -17,7 +16,7 @@ import org.jetbrains.anko.startActivity
 import org.parceler.Parcels
 
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : BaseActivity() {
 
     private lateinit var movieViewModel: MovieViewModel
     private var adapter: MovieAdapter? = null
@@ -25,12 +24,14 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        setUpToolbar()
 
         movieViewModel = ViewModelProviders.of(this).get(MovieViewModel::class.java)
 
         configUI()
 
     }
+
     /**
      * click function for eatch item of Movie in recyclerview
      * @param movie object send to another view
@@ -61,7 +62,6 @@ class MainActivity : AppCompatActivity() {
 
             adapter = MovieAdapter(this, it.listMovie!!) { movie -> onClickListener(movie) }
             recycler_movies.adapter = adapter
-
 
         })
     }
