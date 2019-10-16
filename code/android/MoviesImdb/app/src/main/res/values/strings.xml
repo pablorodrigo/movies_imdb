@@ -9,4 +9,5 @@
     <string name="rating">rating: %1$s/10</string>
     <string name="votes">votes: %1$s</string>
     <string name="overview">OVERVIEW</string>
+    <string name="cast_image">Cast Image</string>
 </resources>

@@ -4,6 +4,7 @@ import br.com.imdb.movies.model.domain.Movie
 import br.com.imdb.movies.model.domain.MoviesTitles
 import retrofit2.Call
 import retrofit2.http.GET
+import retrofit2.http.Path
 import retrofit2.http.Query
 
 /**
@@ -24,5 +25,12 @@ interface MovieApi {
         @Query("api_key") apiKey: String,
         @Query("language") language: String,
         @Query("movie_id") movieId: String
+    ): Call<MoviesTitles>
+
+    @GET("movie/{movie_id}/credits")
+    fun getMovieCasts(
+        @Path("movie_id") movieId: String,
+        @Query("api_key") apiKey: String
+
     ): Call<MoviesTitles>
 }

@@ -1,9 +1,11 @@
 package br.com.imdb.movies.viewmodel
 
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
+import br.com.imdb.movies.model.domain.Cast
 import br.com.imdb.movies.model.domain.Movie
+import br.com.imdb.movies.model.domain.MoviesTitles
 import br.com.imdb.movies.model.repository.MovieRepository
 
 
@@ -13,16 +15,23 @@ import br.com.imdb.movies.model.repository.MovieRepository
 class MovieViewModel : ViewModel() {
 
 
-    private var mutableLiveData: MutableLiveData<Movie>? = null
-    private var  movieRepository: MovieRepository = MovieRepository().getInstance()
+    private var mutableLiveDataMovie: MutableLiveData<Movie>? = null
+    private var mutableLiveDataMovieTitles: MutableLiveData<MoviesTitles>? = null
+    private var movieRepository: MovieRepository = MovieRepository().getInstance()
 
     init {
-        mutableLiveData = movieRepository.getMoviesTopRated()
+        mutableLiveDataMovie = movieRepository.getMoviesTopRated()
     }
 
 
     fun geMoviesTopRatedLiveData(): LiveData<Movie>? {
-        return mutableLiveData
+        return mutableLiveDataMovie
+    }
+
+    fun getMovieCastsLiveData(movieId: String): LiveData<MoviesTitles>? {
+        if (mutableLiveDataMovieTitles == null)
+            mutableLiveDataMovieTitles = movieRepository.getMovieCasts(movieId)
+        return mutableLiveDataMovieTitles
     }
 
 }

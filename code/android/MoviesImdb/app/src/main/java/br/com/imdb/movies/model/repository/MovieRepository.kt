@@ -3,7 +3,9 @@ package br.com.imdb.movies.model.repository
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import br.com.imdb.movies.APIKEY
+import br.com.imdb.movies.model.domain.Cast
 import br.com.imdb.movies.model.domain.Movie
+import br.com.imdb.movies.model.domain.MoviesTitles
 import br.com.imdb.movies.model.network.APIRetrofitService
 import br.com.imdb.movies.model.network.MovieApi
 import retrofit2.Call
@@ -47,6 +49,31 @@ class MovieRepository {
 
             override fun onFailure(call: Call<Movie>, t: Throwable) {
                 Log.d("response", t.printStackTrace().toString())
+                movieData.value = null
+            }
+        })
+        return movieData
+    }
+
+    /**
+     * get all cast from movie
+     */
+    fun getMovieCasts(movieId: String): MutableLiveData<MoviesTitles> {
+        val movieData = MutableLiveData<MoviesTitles>()
+        movieAPi.getMovieCasts(movieId,APIKEY.TMDB_API_KEY ).enqueue(object :
+            Callback<MoviesTitles> {
+            override fun onResponse(
+                call: Call<MoviesTitles>,
+                response: Response<MoviesTitles>
+            ) {
+                Log.i("response", response.raw().request().url().toString())
+                if (response.isSuccessful) {
+                    movieData.value = response.body()
+                }
+            }
+
+            override fun onFailure(call: Call<MoviesTitles>, t: Throwable) {
+                Log.i("response", t.printStackTrace().toString())
                 movieData.value = null
             }
         })

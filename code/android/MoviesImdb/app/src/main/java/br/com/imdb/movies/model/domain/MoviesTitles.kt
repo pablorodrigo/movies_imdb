@@ -10,6 +10,7 @@ import org.parceler.Parcel
 @Parcel
 class MoviesTitles {
 
+    var id: String? = null
     var title: String? = null
     @SerializedName("original_title")
     @Expose
@@ -26,5 +27,7 @@ class MoviesTitles {
     var adult: Boolean? = null
     @SerializedName("vote_count")
     var voteCount: String? = null
+    @SerializedName("cast")
+    var listCast: MutableList<Cast>? = null
 
 }

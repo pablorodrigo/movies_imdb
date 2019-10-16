@@ -60,14 +60,14 @@
                 </androidx.cardview.widget.CardView>
 
                 <TextView
-                    android:fontFamily="@font/opensans_semibold"
                     android:id="@+id/detail_movie_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignTop="@+id/activity_detail_toolbar_card"
-                    android:layout_marginEnd="8dp"
                     android:layout_marginTop="34dp"
+                    android:layout_marginEnd="8dp"
                     android:layout_toEndOf="@+id/activity_detail_toolbar_card"
+                    android:fontFamily="@font/opensans_semibold"
                     android:maxLength="400"
                     android:maxLines="2"
                     android:text="Maze Runner"
@@ -78,8 +78,8 @@
                     android:id="@+id/detail_movie_date"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignStart="@+id/detail_movie_title"
                     android:layout_below="@+id/detail_movie_title"
+                    android:layout_alignStart="@+id/detail_movie_title"
                     android:maxLength="400"
                     android:maxLines="2"
                     android:text="12 July, 2018"
@@ -94,11 +94,11 @@
                     android:layout_alignParentEnd="true"
                     android:layout_alignParentBottom="true"
                     android:layout_margin="16dp"
+                    android:background="@drawable/ic_thumb_up_outline_white_24dp"
                     android:button="@null"
                     android:checked="false"
                     android:clickable="true"
                     android:focusable="true"
-                    android:background="@drawable/ic_thumb_up_outline_white_24dp"
                     android:stateListAnimator="@animator/scale"
                     app:layout_constraintLeft_toLeftOf="parent" />
 
@@ -109,13 +109,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
                 android:backgroundTint="@color/colorPrimary"
-                android:contentInsetLeft="0dp"
                 android:contentInsetStart="0dp"
+                android:contentInsetLeft="0dp"
                 app:contentInsetLeft="0dp"
                 app:contentInsetStart="0dp"
                 app:layout_collapseMode="pin"
-                app:title=" ">
-            </androidx.appcompat.widget.Toolbar>
+                app:title=" "></androidx.appcompat.widget.Toolbar>
 
         </com.google.android.material.appbar.CollapsingToolbarLayout>
 
@@ -132,9 +131,9 @@
             android:layout_height="wrap_content">
 
             <View
-                app:layout_constraintBottom_toTopOf="@+id/activity_detail_ratings_linear_layout"
                 android:layout_width="match_parent"
-                android:layout_height="0.5dp" />
+                android:layout_height="0.5dp"
+                app:layout_constraintBottom_toTopOf="@+id/activity_detail_ratings_linear_layout" />
 
             <LinearLayout
                 android:id="@+id/activity_detail_ratings_linear_layout"
@@ -142,8 +141,8 @@
                 android:layout_height="50dp"
                 android:gravity="center"
                 android:orientation="horizontal"
-                android:paddingBottom="4dp"
                 android:paddingTop="4dp"
+                android:paddingBottom="4dp"
                 android:weightSum="3"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -153,8 +152,8 @@
                     android:id="@+id/detail_adult"
                     android:layout_width="wrap_content"
                     android:layout_height="28dp"
-                    android:layout_marginEnd="4dp"
                     android:layout_marginStart="4dp"
+                    android:layout_marginEnd="4dp"
                     android:layout_weight="1"
                     android:background="@drawable/background_round"
                     android:gravity="center"
@@ -173,31 +172,32 @@
                     android:id="@+id/detail_vote_count"
                     android:layout_width="wrap_content"
                     android:layout_height="28dp"
-                    android:layout_marginEnd="4dp"
                     android:layout_marginStart="4dp"
+                    android:layout_marginEnd="4dp"
                     android:layout_weight="1"
                     android:background="@drawable/background_round"
                     android:gravity="center"
                     android:text="@string/votes" />
 
             </LinearLayout>
+
             <View
-                app:layout_constraintTop_toBottomOf="@+id/activity_detail_ratings_linear_layout"
                 android:layout_width="match_parent"
-                android:layout_height="0.5dp" />
+                android:layout_height="0.5dp"
+                app:layout_constraintTop_toBottomOf="@+id/activity_detail_ratings_linear_layout" />
 
             <TextView
                 android:id="@+id/detail_overview_text"
                 android:layout_width="match_parent"
-                android:background="@color/gray"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:layout_marginEnd="8dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="16dp"
-                android:padding="10dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="8dp"
+                android:background="@color/gray"
                 android:fontFamily="@font/opensans_semibold"
                 android:gravity="bottom"
+                android:padding="10dp"
                 android:text="@string/overview"
                 android:textSize="12sp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -226,8 +226,8 @@
                     android:id="@+id/detail_movie_time_linear_layout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="4dp"
                     android:layout_marginTop="4dp"
+                    android:layout_marginBottom="4dp"
                     android:orientation="horizontal">
 
                     <TextView
@@ -235,7 +235,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_marginStart="8dp"
-                        android:fontFamily="@font/open_sans_regular"/>
+                        android:fontFamily="@font/open_sans_regular" />
 
                     <View
                         android:layout_width="1dp"
@@ -262,8 +262,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="4dp"
                     android:fontFamily="@font/open_sans_regular"
-                    android:paddingEnd="8dp"
                     android:paddingStart="8dp"
+                    android:paddingEnd="8dp"
                     android:scrollbars="vertical"
                     android:textAlignment="textStart" />
 
@@ -287,10 +287,10 @@
                     style="?android:attr/ratingBarStyleIndicator"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="4dp"
-                    android:layout_marginEnd="16dp"
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="4dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginBottom="4dp"
                     android:rating="4" />
 
                 <View
@@ -298,16 +298,18 @@
                     android:layout_height="0.5dp" />
             </LinearLayout>
 
-           <!-- <TextView
+            <TextView
                 android:id="@+id/activity_detail_cast_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="12dp"
-                android:layout_marginEnd="8dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="16dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="12dp"
+                android:background="@color/gray"
                 android:fontFamily="@font/opensans_semibold"
                 android:gravity="bottom"
+                android:padding="10dp"
                 android:text="@string/cast"
                 android:textSize="12sp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -315,86 +317,80 @@
                 app:layout_constraintTop_toBottomOf="@+id/activity_detail_overview_linear_layout" />
 
             <RelativeLayout
-                android:layout_marginTop="4dp"
-                android:id="@+id/activity_detail_cast_relative_layout"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/activity_detail_cast_text"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <View
-                    android:layout_above="@+id/activity_detail_cast_recycler_view"
-                    android:layout_width="match_parent"
-                    android:layout_height="0.5dp" />
-                <androidx.recyclerview.widget.RecyclerView
-                    android:layout_toStartOf="@+id/activity_detail_cast_progress_bar"
-                    android:id="@+id/activity_detail_cast_recycler_view"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-                </androidx.recyclerview.widget.RecyclerView>
-                <ProgressBar
-                    android:indeterminate="true"
-                    android:layout_centerVertical="true"
-                    android:layout_alignParentEnd="true"
-                    android:id="@+id/activity_detail_cast_progress_bar"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-                <View
-                    android:layout_below="@+id/activity_detail_cast_recycler_view"
-                    android:layout_width="match_parent"
-                    android:layout_height="0.5dp"/>
-
-            </RelativeLayout>
-
-            <TextView
-                android:id="@+id/activity_detail_trailer_text"
+                android:id="@+id/detail_cast_relative_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="12dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="16dp"
-                android:fontFamily="@font/opensans_semibold"
-                android:gravity="bottom"
-                android:text="@string/trailers"
-                android:textSize="12sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/activity_detail_cast_relative_layout" />
-
-            <RelativeLayout
                 android:layout_marginTop="4dp"
-                android:id="@+id/activity_detail_trailer_relative_layout"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/activity_detail_trailer_text"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                app:layout_constraintTop_toBottomOf="@+id/activity_detail_cast_text">
 
                 <View
-                    android:layout_above="@+id/activity_detail_trailer_recycler_view"
                     android:layout_width="match_parent"
-                    android:layout_height="0.5dp" />
+                    android:layout_height="0.5dp"
+                    android:layout_above="@+id/detail_cast_recycler_view" />
 
                 <androidx.recyclerview.widget.RecyclerView
-                    android:layout_toStartOf="@+id/activity_detail_trailer_progress_bar"
-                    android:id="@+id/activity_detail_trailer_recycler_view"
+                    android:id="@+id/detail_cast_recycler_view"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-                </androidx.recyclerview.widget.RecyclerView>
-                <ProgressBar
-                    android:indeterminate="true"
-                    android:layout_centerVertical="true"
-                    android:layout_alignParentEnd="true"
-                    android:id="@+id/activity_detail_trailer_progress_bar"
-                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
 
                 <View
-                    android:layout_above="@+id/activity_detail_trailer_recycler_view"
                     android:layout_width="match_parent"
-                    android:layout_height="0.5dp"/>
-            </RelativeLayout>-->
+                    android:layout_height="0.5dp"
+                    android:layout_below="@+id/detail_cast_recycler_view" />
+
+            </RelativeLayout>
+            <!--
+                       <TextView
+                           android:id="@+id/activity_detail_trailer_text"
+                           android:layout_width="match_parent"
+                           android:layout_height="wrap_content"
+                           android:layout_marginBottom="12dp"
+                           android:layout_marginEnd="8dp"
+                           android:layout_marginStart="8dp"
+                           android:layout_marginTop="16dp"
+                           android:fontFamily="@font/opensans_semibold"
+                           android:gravity="bottom"
+                           android:text="@string/trailers"
+                           android:textSize="12sp"
+                           app:layout_constraintEnd_toEndOf="parent"
+                           app:layout_constraintStart_toStartOf="parent"
+                           app:layout_constraintTop_toBottomOf="@+id/activity_detail_cast_relative_layout" />
+
+                       <RelativeLayout
+                           android:layout_marginTop="4dp"
+                           android:id="@+id/activity_detail_trailer_relative_layout"
+                           app:layout_constraintEnd_toEndOf="parent"
+                           app:layout_constraintStart_toStartOf="parent"
+                           app:layout_constraintTop_toBottomOf="@+id/activity_detail_trailer_text"
+                           android:layout_width="match_parent"
+                           android:layout_height="wrap_content">
+
+                           <View
+                               android:layout_above="@+id/activity_detail_trailer_recycler_view"
+                               android:layout_width="match_parent"
+                               android:layout_height="0.5dp" />
+
+                           <androidx.recyclerview.widget.RecyclerView
+                               android:layout_toStartOf="@+id/activity_detail_trailer_progress_bar"
+                               android:id="@+id/activity_detail_trailer_recycler_view"
+                               android:layout_width="match_parent"
+                               android:layout_height="wrap_content">
+                           </androidx.recyclerview.widget.RecyclerView>
+                           <ProgressBar
+                               android:indeterminate="true"
+                               android:layout_centerVertical="true"
+                               android:layout_alignParentEnd="true"
+                               android:id="@+id/activity_detail_trailer_progress_bar"
+                               android:layout_width="wrap_content"
+                               android:layout_height="wrap_content" />
+
+                           <View
+                               android:layout_above="@+id/activity_detail_trailer_recycler_view"
+                               android:layout_width="match_parent"
+                               android:layout_height="0.5dp"/>
+                       </RelativeLayout>-->
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

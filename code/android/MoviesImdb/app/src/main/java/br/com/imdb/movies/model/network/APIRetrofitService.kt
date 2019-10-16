@@ -34,13 +34,4 @@ class APIRetrofitService {
 
     }
 
-
-
-
-   /* @GET("movie/top_rated")
-    fun getTopRatedMovies(@Query("api_key") apiKey: String,
-                          @Query("language") language: String,
-                          @Query("page") pageNumber: Int,
-                          @Query("region") region:String): Call<Movie>*/
-
 }
